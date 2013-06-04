@@ -15,64 +15,8 @@ Related Projects
 #. `bueda-django-boilerplate <https://github.com/bueda/django-boilerplate>`_
 
 
-Acknowledgements
+Directory structure
 ================
-
-directory structure::
-    
-    django-boilerplate
-    ├── apps
-    │   ├── core
-    │   │   ├── __init__.py
-    │   │   ├── models.py
-    │   │   ├── README.rst
-    │   │   ├── static
-    │   │   │   └── core
-    │   │   │       ├── css
-    │   │   │       │   ├── core.css
-    │   │   │       │   └── README.rst
-    │   │   │       ├── img
-    │   │   │       │   └── README.rst
-    │   │   │       ├── js
-    │   │   │       │   ├── core.js
-    │   │   │       │   └── README.rst
-    │   │   │       ├── lib
-    │   │   │       │   └── README.rst
-    │   │   │       └── README.rst
-    │   │   ├── templates
-    │   │   │   ├── 404.html
-    │   │   │   ├── 500.html
-    │   │   │   ├── base.html
-    │   │   │   └── README.rst
-    │   │   └── views.py
-    │   ├── __init__.py
-    │   └── README.rst
-    ├── environment.py
-    ├── __init__.py
-    ├── lib
-    │   ├── __init__.py
-    │   └── README.rst
-    ├── log
-    │   └── README.rst
-    ├── manage.py
-    ├── media
-    │   └── README.rst
-    ├── README.rst
-    ├── requirements
-    │   ├── common.txt
-    │   ├── dev.txt
-    │   ├── production.txt
-    │   └── README.rst
-    ├── settings
-    │   ├── default.py
-    │   ├── dev.py
-    │   ├── __init__.py
-    │   ├── README.rst
-    │   └── urls.py
-    ├── static
-    │   └── README.rst
-    └── TIMELINE.rst
-
 
 apps
 ----
@@ -82,7 +26,7 @@ templates or all of the above. These should be Python packages you would add to
 your project's ``INSTALLED_APPS`` list.
 
 Everything in this directory is added to the ``PYTHONPATH`` when
-the ``setup`` function from ``environment.py`` is invoked.
+the ``setup`` function from ``env.py`` is invoked.
 
 There's one predefined app: ``core``. Every base classes should be placed here.
 It's also a place to keep your project-level static files. Here's how you might
@@ -98,17 +42,19 @@ copy contents of static folders from each app. We decide that the best way
 to keep clean, resonable and simple structure, will be keeping all static
 dependentcies to ``core`` app.
 
+Since django 1.5 we treat it as a main container -- ``apps`` is default name of project (that's why it is module).
+
 lib
 ---
 
 Third party Python packages and/or django-apps. Everything in this directory
-is added to the ``PYTHONPATH`` when the ``setup`` function from  ``environment.py``
-is invoked.
+is added to the ``PYTHONPATH`` when the ``setup`` function from  ``env.py``
+is invoked or ``python manage.py runserver``
 
 log
 ---
 
-Default place to store logs from your loggers. We recommend ./logs/$app/ for keeping logs of $app django application.
+Default place to store logs from your loggers. We recommend ./log/$app/ for keeping logs of $app django application.
 
 static
 ------
@@ -117,28 +63,32 @@ This folder is fully auto-generated. You don't even need to create it.
 It will be created by ``manage.py collectstatic`` command line tool.
 
 
-requirements
+req
 ------------
 
 pip requirements files, optionally one for each app environment. The
-``common.txt`` is installed in every case.
+``common.txt`` is installed in every case. Additionaly packages.txt
+contains information about specific system wide packages needs.
 
 
-settings
+apps/settings
 --------
 
-Very similar to requirements - settings for each environment. There's also
-main ``urls.py`` file.
+Settings which enable distinction between default and local scope. Each environment gets it's own ``apps/settings/local.py`` which is NOT shared across CVS. Only default.py should be placed there. Settings from default.py are covered by each environment local.py versions.
+
+We provide ``local-dev-sample.py`` which is project boilerplate to start with, just copy it to ``local.py`` and You are ready to start off!
+
+Additionaly we think that urls.py fit in here nicely.
 
 
 Files
 -----
 
-- environment.py
+- env.py
 
 Introduces ``setup`` function that modifies the ``PYTHONPATH`` to allow importing
-from the ``apps`` and ``lib`` directories.
-
+from the ``apps`` and ``lib`` directories. It also provide WSGI application interface.
+Just point dir of WSGI to ``/boilerplate-django-project/`` and give ``env`` as a module.
 
 - manage.py
 
