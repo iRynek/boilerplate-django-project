@@ -8,8 +8,7 @@ Related projects
 -----------
 
 * jqb's [boilerplate](https://github.com/jqb/boilerplate) - utility to manage boilerplates
-* jqb's [boilerplate-django-project](https://github.com/jqb/boilerplate-django-project) 
-- jqb's django-project boilerplate
+* jqb's [boilerplate-django-project](https://github.com/jqb/boilerplate-django-project) - jqb's django-project boilerplate
 
 
 Directory structure
