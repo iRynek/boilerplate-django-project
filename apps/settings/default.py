@@ -34,10 +34,10 @@ INSTALLED_APPS = (
      ### EXTERNAL via VIRTUALENV
 
 )
-
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
+TEMPLATE_LOADERS = (('django.template.loaders.cached.Loader', (
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+    )),
 )
 
 MIDDLEWARE_CLASSES = (
@@ -67,6 +67,7 @@ SITE_ID = 1
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # django.contrib.staticfiles
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 STATIC_ROOT = projectpath('static')
 STATIC_URL = '/static/'
 
