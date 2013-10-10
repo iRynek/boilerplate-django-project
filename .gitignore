@@ -33,6 +33,7 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+.settings
 
 # others
 apps/settings/local.py # local version of settings.py
