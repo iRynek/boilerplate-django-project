@@ -10,7 +10,7 @@
 
 #####
 
-# go to proper direcotry
+# go to proper directory
 cd './less/';
 
 CUSTOM_DIR='custom/'
@@ -30,14 +30,14 @@ fi
 
 # rest of custom
 for file in $LESS_FILES ; do
-    is_extended=`cat "$file" | grep "'${CUSTOM_DIR}${file}'"`
+    is_extended=`cat "$file" | grep "${CUSTOM_DIR}${file}"`
     if [ -z "$is_extended" ] ; then
-        printf "\n@import '${CUSTOM_DIR}${file}'\n" >> $file
+        printf "\n@import \"${CUSTOM_DIR}${file}\";\n" >> $file
         echo "Extended file '$file'..."
     fi
 
     if [ ! -e "${CUSTOM_DIR}$file" ] ; then
-        printf "/* extends ../$file  */\n\n" > "${CUSTOM_DIR}$file"
+        printf "// extends ../$file  \n\n" > "${CUSTOM_DIR}$file"
         echo "Added file '${CUSTOM_DIR}$file'..."
     fi
 done
