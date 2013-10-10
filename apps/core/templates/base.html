@@ -26,10 +26,19 @@
     <!-- Le javascript
     ================================================== -->
       {% block js_include %}
+        <script src="//ajax.googleapis.com/ajax/libs/webfont/1.4.6/webfont.js"></script>
         <script src="{% static 'core/lib/modernizr/modernizr.min.js' %}"></script>
       {% endblock %}
       {% block js_inline %}
         <script>
+        /* WebFonts without FOUT (http://help.typekit.com/customer/portal/articles/6852) */
+        if ( window.WebFont ) {
+            WebFont.load({
+                google: {
+                  families: []
+                }
+            });
+        }
         /* Check support for media queries */
         Modernizr.load({
             test : Modernizr.mq('only all'),
@@ -51,7 +60,7 @@
                 }
             },
             {% block js_inline_modernizr_after_jquery %}
-              '{% static 'core/lib/bootstrap/js/bootstrap.js' %}',
+              //'{% static 'core/lib/bootstrap/js/bootstrap.js' %}',
               '{% static 'core/js/base.js' %}'
             {% endblock %}
         ]);

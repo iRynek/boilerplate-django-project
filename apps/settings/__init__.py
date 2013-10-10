@@ -15,7 +15,8 @@ projectpath = create_projectpath(__file__)
 # sequence of settings module to read
 files_base_names = [
     'default',
-    'local'
+    'local',
+    'test'
 ]
 
 for base_name in files_base_names:
