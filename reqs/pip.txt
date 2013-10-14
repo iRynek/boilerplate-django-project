@@ -4,7 +4,6 @@ South
 
 # tests
 fabric
-pep8
 pylint
 django-discover-jenkins
 django-discover-runner

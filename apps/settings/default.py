@@ -65,13 +65,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 # discover_runner
 TEST_RUNNER = 'discover_jenkins.runner.DiscoverCIRunner'
 TEST_PROJECT_APPS = (
-    'apps.core',
+    'apps',
 )
 TEST_TASKS = (
     'discover_jenkins.tasks.run_pylint.PyLintTask',
-    # 'discover_jenkins.tasks.with_coverage.CoverageTask',
-    'discover_jenkins.tasks.run_pep8.Pep8Task',
 )
+TEST_PYLINT_RCFILE = projectpath('tests') + 'pylint.rc'  # pylint: disable=undefined-variable
 
 # django.contrib.sites
 SITE_ID = 1

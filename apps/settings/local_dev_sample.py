@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
-
-########
-# If it is local.py, it shouldn't be under version control (VCS)!
-# You are using. Details below!
-########
-# It is local version of settings.py for
-# particular developer, stage or production environment
-# here You can overwrite or update settings/default.py's
+# pylint: disable=duplicate-code
+"""
+It is local version of settings.py for particular developer, stage, production
+or test environment here You can overwrite or update apps/settings/default.py's
+If it is settings/local.py, it SHOULDN'T be under version control!
+"""
 
 DEBUG = True
 TEMPLATE_DEBUG = True
@@ -16,7 +14,7 @@ SECRET_KEY = '3ee655f6eb8eb559874e525da3f31969'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': projectpath('') + 'dev.db',
+        'NAME': projectpath('') + 'dev.db',  # pylint: disable=undefined-variable
     }
 }
 
