@@ -19,7 +19,7 @@ USE_I18N = False
 USE_L10N = False
 
 INSTALLED_APPS = (
-     ### CONTRIB
+     # ## CONTRIB
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sites',
@@ -27,11 +27,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     ### INTERNAL
+     # ## INTERNAL
     'apps.core',
-     ### EXTERNAL via ./lib/
-
-     ### EXTERNAL via VIRTUALENV
+     # ## EXTERNAL via ./lib/
+     # ## EXTERNAL via VIRTUALENV
+     'south',
+     'discover_runner',
+     'discover_jenkins',
 
 )
 TEMPLATE_LOADERS = (('django.template.loaders.cached.Loader', (
@@ -60,6 +62,17 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 # APPS SETTINGS #########################################
+# discover_runner
+TEST_RUNNER = 'discover_jenkins.runner.DiscoverCIRunner'
+TEST_PROJECT_APPS = (
+    'apps.core',
+)
+TEST_TASKS = (
+    'discover_jenkins.tasks.run_pylint.PyLintTask',
+    # 'discover_jenkins.tasks.with_coverage.CoverageTask',
+    'discover_jenkins.tasks.run_pep8.Pep8Task',
+)
+
 # django.contrib.sites
 SITE_ID = 1
 

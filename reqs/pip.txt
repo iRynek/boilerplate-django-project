@@ -1,2 +1,14 @@
-django>=1.5
+# default
+Django>=1.5
 South
+
+# tests
+fabric
+pep8
+pylint
+django-discover-jenkins
+django-discover-runner
+
+#project specific
+django-bootstrap-toolkit
+django-template-pages
