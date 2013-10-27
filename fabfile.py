@@ -57,12 +57,12 @@ def migrate():
 @task
 def syncdb():
     with cd(env.project_root):
-        virtualenv(u'python manage.py syncdb')
+        virtualenv(u'python manage.py syncdb --noinput')
 
 @task
 def restart():
     with cd(env.project_root):
-        run(u'touch uwsgi.xml')
+        run(u'killall -s HUP gunicorn')
 
 @task
 def install_reqs():
