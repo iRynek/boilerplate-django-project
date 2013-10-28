@@ -31,9 +31,10 @@ nosetests.xml
 
 # Mr Developer
 .mr.developer.cfg
-.project
-.pydevproject
-.settings
 
 # others
-apps/settings/local.py # local version of settings.py
+*.db
+.*
+apps/settings/local.py
+src/bootstrap/node_modules
+reports/
