@@ -34,6 +34,7 @@ INSTALLED_APPS = (
      'south',
      'discover_runner',
      'discover_jenkins',
+     'compressor',
 
 )
 TEMPLATE_LOADERS = (('django.template.loaders.cached.Loader', (
@@ -85,4 +86,15 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = projectpath('media')
 MEDIA_URL = '/media/'
+
+# django_compressor
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
+COMPRESS_PRECOMPILERS = (
+    ('text/less', 'recess {infile} --compress --compile --noIds false 2>>%srecess' % (projectpath('log'), )),
+)
 # APPS SETTINGS #########################################

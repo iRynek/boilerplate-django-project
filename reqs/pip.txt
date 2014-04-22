@@ -1,13 +1,19 @@
 # default
-Django>=1.5
-South
+ipython
+gunicorn
+Django>=1.6,<1.7
+South>=0.8,<0.9
+django_compressor>=1.3,<1.4
+# due to django_compressor requirements (https://github.com/jezdez/django_compressor/issues/261)
+BeautifulSoup<4.0
+nodeenv>=0.8.0,<0.9.0
+
+# deploy
+fabric>=1.8,<1.9
 
 # tests
-fabric
-pylint
-django-discover-jenkins
-django-discover-runner
+pylint>=1.0,<1.1
+django-discover-jenkins>=0.1,<0.2
+django-discover-runner>=1.0,<1.1
 
-#project specific
-django-bootstrap-toolkit
-django-template-pages
+# project specific

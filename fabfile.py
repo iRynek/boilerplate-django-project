@@ -11,6 +11,7 @@ env.roledefs = {
     'web': env.hosts,
 }
 
+
 @task
 def deploy():
     pull_repo()        # pull code from repository
@@ -26,43 +27,52 @@ def deploy():
 ## CONFIG END
 ####################
 
+
 def virtualenv(command):
     return run(env.activate_virtual_env + ' && ' + command)
+
 
 @task
 def clearcache():
     with cd(env.project_root):
         virtualenv(u'python manage.py clearcache')
 
+
 @task
 def load_common_data():
     with cd(env.project_root):
         virtualenv(u'python manage.py loaddata common_data')
+
 
 @task
 def pull_repo():
     with cd(env.project_root):
         run(u'git pull')
 
+
 @task
 def collectstatic():
     with cd(env.project_root):
         virtualenv(u'python manage.py collectstatic --noinput')
 
+
 @task
 def migrate():
     with cd(env.project_root):
-        virtualenv(u'python manage.py migrate')
+        virtualenv(u'python manage.py syncdb --migrate')
+
 
 @task
 def syncdb():
     with cd(env.project_root):
         virtualenv(u'python manage.py syncdb --noinput')
 
+
 @task
 def restart():
     with cd(env.project_root):
         run(u'killall -s HUP gunicorn')
+
 
 @task
 def install_reqs():
