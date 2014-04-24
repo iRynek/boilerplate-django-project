@@ -2,6 +2,16 @@ import os
 import sys
 
 
+def __create_projectpath(thefile):
+    """
+    Creates/returns OS-independent projectpath function, starting in basedir of thefile
+    """
+    from os.path import join, dirname, abspath
+    root = abspath(dirname(abspath(thefile)))
+    return lambda *a: join(root, *(a + ('',)))
+projectpath = __create_projectpath(__file__)
+
+
 def setup(settings_module_name=None):
     """
     Simple setup snippet that makes easy to create
@@ -21,11 +31,9 @@ def setup(settings_module_name=None):
     # add ./lib before any others paths
     # overwrite django and other shared python libs
     # it's one of 'little ugly hack' that make things works
-    __root = os.path.dirname(os.path.abspath(__file__))
-    __path = lambda *a: os.path.join(__root, *a)
-    sys.path.insert(0, __path(''))
-    if os.path.exists(__path('lib')):
-        sys.path.insert(0, __path('lib'))
+    sys.path.insert(0, projectpath(''))
+    if os.path.exists(projectpath('lib')):
+        sys.path.insert(0, projectpath('lib'))
 
     settings_module_name = settings_module_name or 'apps.settings'
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", settings_module_name)

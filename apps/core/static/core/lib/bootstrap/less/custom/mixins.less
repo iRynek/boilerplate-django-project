@@ -1,0 +1,62 @@
+// extends ../mixins.less  
+
+.transform(@where) {
+  -moz-transform: @where;
+  -webkit-transform: @where;
+  -ms-transform: @where;
+  -o-transform: @where;
+  transform: @where;
+}
+
+.transform-style(@arg) {
+  -webkit-transform-style: @arg;
+  -moz-transform-style: @arg;
+  -ms-transform-style: @arg;
+  -o-transform-style: @arg;
+  transform-style: @arg;
+}
+
+.btnBg(@color) {
+  background-color: @color;
+
+  &:hover, &:focus, &:active, &.active, &.disabled, &[disabled] {
+    background-color: lighten(@color, 10%);
+  }
+}
+
+.desaturate(){
+  -webkit-filter: grayscale(1);
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  filter: gray;
+  filter: grayscale(100%);
+  filter: url(desaturate.svg#greyscale);
+}
+
+.saturate(){
+  -webkit-filter: none;
+  -moz-filter: none;
+  filter: none;
+}
+
+// Button backgrounds
+// ------------------
+/*.btnBg(@startColor, @endColor) {
+  // gradientBar will set the background to a pleasing blend of these, to support IE<=9
+  //.gradientBar(@startColor, @startColor, @textColor, @textShadow);
+   background-color: @startColor;
+  *background-color: @startColor;
+  .reset-filter();
+
+  // in these cases the gradient won't cover the background, so we override
+  &:hover, &:focus, &:active, &.active, &.disabled, &[disabled] {
+    background-color: @endColor;
+    *background-color: darken(@endColor, 5%);
+  }
+
+  // IE 7 + 8 can't handle box-shadow to show active, so we darken a bit ourselves
+  &:active,
+  &.active {
+    background-color: darken(@endColor, 10%) e("\9");
+  }
+}*/

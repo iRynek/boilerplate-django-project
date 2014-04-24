@@ -15,7 +15,6 @@ var
 sdist
 develop-eggs
 .installed.cfg
-lib
 lib64
 
 # Installer logs
@@ -35,6 +34,10 @@ nosetests.xml
 # others
 *.db
 .*
-apps/settings/local.py
-src/bootstrap/node_modules
+/apps/settings/local.py
+node_modules/
 reports/
+log/
+/static/
+/media/
+

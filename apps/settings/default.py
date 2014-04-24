@@ -32,8 +32,6 @@ INSTALLED_APPS = (
      # ## EXTERNAL via ./lib/
      # ## EXTERNAL via VIRTUALENV
      'south',
-     'discover_runner',
-     'discover_jenkins',
      'compressor',
 
 )
@@ -63,16 +61,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 # APPS SETTINGS #########################################
-# discover_runner
-TEST_RUNNER = 'discover_jenkins.runner.DiscoverCIRunner'
-TEST_PROJECT_APPS = (
-    'apps',
-)
-TEST_TASKS = (
-    'discover_jenkins.tasks.run_pylint.PyLintTask',
-)
-TEST_PYLINT_RCFILE = projectpath('tests') + 'pylint.rc'  # pylint: disable=undefined-variable
-
 # django.contrib.sites
 SITE_ID = 1
 
@@ -95,6 +83,6 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 COMPRESS_PRECOMPILERS = (
-    ('text/less', 'recess {infile} --compress --compile --noIds false 2>>%srecess' % (projectpath('log'), )),
+    ('text/less', 'recess {infile} --compile --noIds false'),
 )
 # APPS SETTINGS #########################################

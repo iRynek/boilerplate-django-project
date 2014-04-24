@@ -12,8 +12,7 @@ nodeenv>=0.8.0,<0.9.0
 fabric>=1.8,<1.9
 
 # tests
-pylint>=1.0,<1.1
-django-discover-jenkins>=0.1,<0.2
-django-discover-runner>=1.0,<1.1
+#django-discover-jenkins>=0.1,<0.2
+#factory-boy
 
 # project specific

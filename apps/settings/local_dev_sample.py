@@ -9,6 +9,11 @@ If it is settings/local.py, it SHOULDN'T be under version control!
 DEBUG = True
 TEMPLATE_DEBUG = True
 
+ALLOWED_HOSTS = (
+    "localhost.com",
+    "localhost"
+)
+
 SECRET_KEY = '3ee655f6eb8eb559874e525da3f31969'
 
 DATABASES = {
