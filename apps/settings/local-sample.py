@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 # pylint: disable=duplicate-code
-
-from .default import *
-
 """
 It is local version of settings.py for particular developer, stage, production
 or test environment here You can overwrite or update apps/settings/default.py's
 If it is settings/local.py, it SHOULDN'T be under version control!
 """
+
+from .default import *
 
 DEBUG = True
 TEMPLATE_DEBUG = True
