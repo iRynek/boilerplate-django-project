@@ -1,5 +1,32 @@
 # -*- coding: utf-8 -*-
 
+#####################################
+### UTILS
+import os
+import sys
+
+# "Temporary globals" that might be useful
+# It can be used in each settings file as built-in
+def __create_projectpath(thefile):
+    from os.path import join, dirname, abspath
+    root = abspath(join(dirname(abspath(thefile)), '..', '..'))
+    return lambda *a: join(root, *(a + ('',)))
+projectpath = __create_projectpath(__file__)
+
+# Setup PYTHOPATH - add projectpath('lib') before any others paths
+# overwrite django and other shared Python libs
+# it's one of 'little ugly hack' that make things works
+if os.path.exists(projectpath('lib')) and len(sys.path) > 0 and sys.path[0] is not projectpath('lib'):
+    sys.path.insert(0, projectpath('lib'))
+
+####################################
+### UTILS END
+
+####################################
+### SETTINGS DEFAULT
+### set Your version of variables in local.py
+### if You do not have one, copy local-sample.py
+
 # set SECRET_KEY in local.py to avoid
 # distributing it along in your CVS
 SECRET_KEY = ''
@@ -83,6 +110,6 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 COMPRESS_PRECOMPILERS = (
-    ('text/less', 'recess {infile} --compile --noIds false'),
+    ('text/less', 'lessc -x --clean-css {infile}'),
 )
 # APPS SETTINGS #########################################

@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 # pylint: disable=duplicate-code
+
+from .default import *
+
 """
 It is local version of settings.py for particular developer, stage, production
 or test environment here You can overwrite or update apps/settings/default.py's

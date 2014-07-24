@@ -1,6 +1,6 @@
 # default
-ipython
-gunicorn
+gunicorn>=18.0,<18.1
+supervisor>=3.0,<3.1
 Django>=1.6,<1.7
 South>=0.8,<0.9
 django_compressor>=1.3,<1.4

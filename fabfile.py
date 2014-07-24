@@ -72,6 +72,7 @@ def syncdb():
 def restart():
     with cd(env.project_root):
         run(u'killall -s HUP gunicorn 2> /dev/null')
+        run(u'killall -s HUP supervisord 2> /dev/null')
 
 
 @task

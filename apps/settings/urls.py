@@ -1,8 +1,12 @@
 from django.conf import settings
-from django.conf.urls import patterns
+from django.conf.urls import patterns, include
 from django.views.generic import TemplateView
 
-urlpatterns = patterns('',
+admin.autodiscover()
+
+urlpatterns = patterns(
+    '',
+    url(r'^admin/', include(admin.site.urls)),
     (r'^$', TemplateView.as_view(template_name='base.html')),
 )
 
